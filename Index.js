@@ -9,39 +9,9 @@ function extraiLinks(texto){
     while((temp = regex.exec(texto)) != null){
         arrayResultado.push({[temp[1]] : [temp[2]]});
     }
-    //const linksExtraidos = texto.match(regex);
-    //const linksExtraidos = regex.exec(texto);
-    //console.log(linksExtraidos);
+    
     return arrayResultado
 }
-
-/*function pegaArquivo(caminhoArquivo){
-    const encoding = "utf-8";
-    fs.readFile(caminhoArquivo, encoding, (erro, texto) => {
-        if(erro){
-            trataErro(erro);
-        }
-        console.log(chalk.green(texto));
-    })
-}*/
-
-function trataErro(erro){
-    throw new Error(chalk.red(erro.code, "não há arquivo no caminho"));
-}
-
-/*function pegaArquivo(caminhoDoArquivo){
-    const encoding = "utf-8";
-    fs.promises
-    .readFile(caminhoDoArquivo, encoding)
-    .then((texto) => console.log(texto))
-    .catch((erro) => trataErro(erro))
-}*/
-
-/*async function pegaArquivo(caminhoDoArquivo){
-    const encoding = "utf-8";
-    const texto = await fs.promises.readFile(caminhoDoArquivo, encoding);
-    console.log(chalk.blueBright(texto));
-}*/
 
 async function pegaArquivo(caminhoDoArquivo){
     const encoding = "utf-8";
@@ -52,6 +22,10 @@ async function pegaArquivo(caminhoDoArquivo){
     catch(erro){
         trataErro(erro);
     }
+}
+
+function trataErro(erro){
+    throw new Error(chalk.red(erro.code, "não há arquivo no caminho"));
 }
 
 pegaArquivo('./Arquivos/texto.md');
